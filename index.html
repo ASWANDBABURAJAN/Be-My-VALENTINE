@@ -1,104 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #ff69b4, #9b59b6, #3498db);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            overflow: hidden;
-        }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        h1 {
-            text-align: center;
-            color: white;
-            font-size: 3em;
-            margin-top: 20%;
-            animation: heartbeat 1s infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: white;
-            background-color: #e74c3c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin: 20px;
-        }
-        .button:hover {
-            transform: translateX(10px);
-        }
-        #noButton:hover {
-            transform: translateX(50px);
-        }
-        .confetti {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            pointer-events: none;
-        }
-    </style>
+    <title>Be My Valentine</title>
 </head>
 <body>
-    <h1>Happy Valentine's Day!</h1>
-    <button class="button" id="yesButton">Yes</button>
-    <button class="button" id="noButton">No</button>
+    <h1>Valentine's Day</h1>
+    <p id="success-message">I know you clicked yes. I love uuu. Be my VALENTINE AMMUTTY.</p>
+    <button onclick="clickYes()">Yes</button>
     <script>
-        document.getElementById('yesButton').addEventListener('click', function() {
-            createConfetti();
-            createHeartParticles();
-        });
-
-        function createConfetti() {
-            const colors = ['#ff0', '#0f0', '#00f', '#f00', '#ff00ff'];
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            for (let i = 0; i < 100; i++) {
-                const particle = document.createElement('div');
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.width = '10px';
-                particle.style.height = '10px';
-                particle.style.backgroundColor = color;
-                particle.style.position = 'absolute';
-                particle.style.left = `${Math.random() * window.innerWidth}px`;
-                particle.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
-                confetti.appendChild(particle);
-            }
-            document.body.appendChild(confetti);
-        }
-        function createHeartParticles() {
-            for (let i = 0; i < 30; i++) {
-                let heart = document.createElement('div');
-                heart.innerHTML = '&hearts;';
-                heart.style.position = 'absolute';
-                heart.style.color = 'red';
-                heart.style.fontSize = '20px';
-                heart.style.transition = 'transform 1s ease';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.top = '80vh';
-                document.body.appendChild(heart);
-                setTimeout(() => {
-                    heart.style.transform = 'translateY(-100vh)';
-                    heart.style.opacity = '0';
-                }, 100);
-            }
+        function clickYes() {
+            document.getElementById('success-message').innerHTML = 'I know you clicked yes. I love uuu. Be my VALENTINE AMMUTTY.';
         }
     </script>
 </body>
