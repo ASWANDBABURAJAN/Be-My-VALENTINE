@@ -1,14 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Be My Valentine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My VALENTINE</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffcccb;
+            font-family: 'Arial', sans-serif;
+        }
+        #message {
+            display: none;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #ff007f;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .confetti div {
+            position: absolute;
+            width: .2em;
+            height: .2em;
+            background: rgba(255,0,0,0.7);
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Valentine's Day</h1>
-    <p id="success-message">I know you clicked yes. I love uuu. Be my VALENTINE AMMUTTY.</p>
-    <button onclick="clickYes()">Yes</button>
+    <div id="message">I know you clicked yes. I love uuu. Be my VALENTINE AMMUTTY.</div>
+    <button onclick="showMessage()">Click Yes</button>
+    <div class="confetti" id="confetti-container"></div>
     <script>
-        function clickYes() {
-            document.getElementById('success-message').innerHTML = 'I know you clicked yes. I love uuu. Be my VALENTINE AMMUTTY.';
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = 'hsl(' + Math.random() * 360 + ', 100%, 50%)';
+                confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                confettiContainer.appendChild(confetti);
+            }
         }
     </script>
 </body>
